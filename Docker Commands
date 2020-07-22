@@ -64,13 +64,13 @@ docker run -d -p 8100:8100 --name=currency-conversion repositoryname/currency-co
 docker network ls
 docker network inspect bridge
 
-docker run -d -p 8100:8100 --env CURRENCY_EXCHANGE_SERVICE_HOST=http://currency-exchange --name=currency-conversion --link currency-exchange in28min/currency-conversion:0.0.1-RELEASE
+docker run -d -p 8100:8100 --env CURRENCY_EXCHANGE_SERVICE_HOST=http://currency-exchange --name=currency-conversion --link currency-exchange repositoryname/currency-conversion:0.0.1-RELEASE
 
 docker network create currency-network
 docker container stop currency-exchange
 docker container stop currency-conversion
-docker run -d -p 8000:8000 --name=currency-exchange --network=currency-network in28min/currency-exchange:0.0.1-RELEASE
-docker run -d -p 8100:8100 --env CURRENCY_EXCHANGE_SERVICE_HOST=http://currency-exchange --name=currency-conversion --network=currency-network in28min/currency-conversion:0.0.1-RELEASE
+docker run -d -p 8000:8000 --name=currency-exchange --network=currency-network repositoryname/currency-exchange:0.0.1-RELEASE
+docker run -d -p 8100:8100 --env CURRENCY_EXCHANGE_SERVICE_HOST=http://currency-exchange --name=currency-conversion --network=currency-network repositoryname/currency-conversion:0.0.1-RELEASE
 
 docker-compose --version
 cd ../../microservices/
@@ -87,12 +87,12 @@ docker-compose images
 docker-compose ps
 docker-compose top
 
-docker build -t in28min/hello-world-java:0.0.1.RELEASE .
-docker push in28min/hello-world-java:0.0.1.RELEASE
+docker build -t repositoryname/hello-world-java:0.0.1.RELEASE .
+docker push repositoryname/hello-world-java:0.0.1.RELEASE
 
-docker build -t in28min/hello-world-python:0.0.1.RELEASE .
-docker push in28min/hello-world-python:0.0.1.RELEASE
+docker build -t repositoryname/hello-world-python:0.0.1.RELEASE .
+docker push repositoryname/hello-world-python:0.0.1.RELEASE
 
-docker build -t in28min/hello-world-nodejs:0.0.1.RELEASE .
-docker push in28min/hello-world-nodejs:0.0.1.RELEASE
+docker build -t repositoryname/hello-world-nodejs:0.0.1.RELEASE .
+docker push repositoryname/hello-world-nodejs:0.0.1.RELEASE
 
